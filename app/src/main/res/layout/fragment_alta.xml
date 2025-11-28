@@ -1,0 +1,240 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/dark_grey"
+    android:padding="16dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="15dp"
+            android:layout_marginBottom="12dp"
+            android:fontFamily="@font/balatro"
+            android:text="REGISTRAR RUN"
+            android:textColor="#FFFFFF"
+            android:textSize="28sp" />
+
+        <!-- spinnersito -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="120dp"
+            android:background="#596266"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:padding="12dp"
+            android:layout_marginBottom="16dp">
+
+            <ImageView
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:src="@drawable/cards"
+                android:contentDescription="Icono Cartas" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Baraja usada"
+                    android:fontFamily="@font/balatro"
+                    android:textColor="#AAAAAA"
+                    android:textSize="12sp" />
+
+                <Spinner
+                    android:id="@+id/spinner_mazos"
+                    android:layout_width="match_parent"
+                    android:layout_height="80dp"
+                    android:backgroundTint="#FFFFFF" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <!-- radio botoncitos -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Dificultad (Pozo/Stake)"
+            android:textColor="#FFFFFF"
+            android:fontFamily="@font/balatro"
+            android:layout_marginBottom="8dp"/>
+
+        <RadioGroup
+            android:id="@+id/radioGroup_stake"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <RadioButton
+                android:id="@+id/rb_white"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/balatro"
+                android:buttonTint="#FFFFFF"
+                android:drawableStart="@drawable/white"
+                android:layout_weight="1"/>
+
+            <RadioButton
+                android:id="@+id/rb_red"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/balatro"
+                android:buttonTint="#FF5252"
+                android:drawableStart="@drawable/red"
+                android:layout_weight="1"/>
+
+            <RadioButton
+                android:id="@+id/rb_green"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/balatro"
+                android:buttonTint="#5F9562"
+                android:drawableStart="@drawable/green"
+                android:layout_weight="1"/>
+
+            <RadioButton
+                android:id="@+id/rb_black"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/balatro"
+                android:buttonTint="#141414"
+                android:drawableStart="@drawable/black"
+                android:layout_weight="1"/>
+        </RadioGroup>
+
+        <RadioGroup
+            android:id="@+id/radioGroup_stake2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginBottom="8dp">
+
+            <RadioButton
+                android:id="@+id/rb_blue"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/balatro"
+                android:buttonTint="#2970FF"
+                android:drawableStart="@drawable/blue"
+                android:layout_weight="1"/>
+
+            <RadioButton
+                android:id="@+id/rb_purple"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/balatro"
+                android:buttonTint="#8D73D2"
+                android:drawableStart="@drawable/purple"
+                android:layout_weight="1"/>
+
+            <RadioButton
+                android:id="@+id/rb_orange"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/balatro"
+                android:buttonTint="#BB7036"
+                android:drawableStart="@drawable/orange"
+                android:layout_weight="1"/>
+
+            <RadioButton
+                android:id="@+id/rb_gold"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/balatro"
+                android:buttonTint="#FFD700"
+                android:drawableStart="@drawable/gold"
+                android:layout_weight="1"/>
+        </RadioGroup>
+
+        <!-- puntajesito -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="bottom">
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <EditText
+                    android:id="@+id/et_seed"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Seed (Ejemplo: J4K8KWA1)"
+                    android:textColor="#FFFFFF"
+                    android:textColorHint="#888888"
+                    android:backgroundTint="#00E5FF"
+                    android:maxLength="8"
+                    android:fontFamily="@font/balatro"/>
+
+                <EditText
+                    android:id="@+id/et_mano"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Mejor mano (puntaje)"
+                    android:inputType="number"
+                    android:textColor="#FFFFFF"
+                    android:textColorHint="#888888"
+                    android:backgroundTint="#00E5FF"
+                    android:fontFamily="@font/balatro"/>
+
+                <EditText
+                    android:id="@+id/et_ante"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Apuesta (ante) alcanzada"
+                    android:inputType="number"
+                    android:maxLength="3"
+                    android:textColor="#FFFFFF"
+                    android:textColorHint="#888888"
+                    android:backgroundTint="#00E5FF"
+                    android:fontFamily="@font/balatro"/>
+            </LinearLayout>
+
+            <ImageView
+                android:layout_width="95dp"
+                android:layout_height="105dp"
+                android:layout_gravity="center"
+                android:layout_marginStart="8dp"
+                android:rotation="15"
+                android:src="@drawable/cavendish" />
+        </LinearLayout>
+
+        <EditText
+            android:id="@+id/et_notas"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Jokers clave, estrategia, mano favoreciente (High Card, Full House), etc..."
+            android:textColor="#FFFFFF"
+            android:textColorHint="#888888"
+            android:backgroundTint="#FFFFFF"
+            android:fontFamily="@font/balatro"
+            android:layout_marginTop="24dp"
+            android:lines="4"
+            android:gravity="top"/>
+
+        <Button
+            android:id="@+id/btn_guardar"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:layout_marginTop="10dp"
+            android:text="GUARDAR RUN"
+            android:textSize="20sp"
+            android:fontFamily="@font/balatro"
+            android:backgroundTint="#D32F2F"
+            android:textColor="#FFFFFF" />
+
+    </LinearLayout>
+</ScrollView>

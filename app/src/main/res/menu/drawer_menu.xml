@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/nav_home"
+        android:icon="@drawable/jimbo"
+        android:title="Menú principal" />
+    <item
+        android:id="@+id/nav_registro"
+        android:icon="@drawable/cards"
+        android:title="Registrar nueva partida" />
+    <item
+        android:id="@+id/nav_lista"
+        android:icon="@drawable/cavendish"
+        android:title="Lista de partidas" />
+</menu>

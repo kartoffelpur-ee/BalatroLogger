@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/black_2"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:padding="8dp">
+
+        <!-- IMAGEN DEL MAZO -->
+        <ImageView
+            android:id="@+id/img_baraja_item"
+            android:layout_width="60dp"
+            android:layout_height="80dp"
+            android:src="@drawable/cards"
+            android:scaleType="fitCenter" />
+
+        <!-- INFO PRINCIPAL -->
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_marginStart="16dp"
+            android:orientation="vertical">
+
+            <!-- Título: Mazo y Stake -->
+            <TextView
+                android:id="@+id/txt_stake"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Pozo pollas"
+                android:textColor="#FFFFFF"
+                android:textSize="18sp"
+                android:fontFamily="@font/balatro"
+                android:textStyle="bold"
+                android:shadowColor="#000000"
+                android:shadowDx="2"
+                android:shadowDy="2"
+                android:shadowRadius="1"/>
+
+            <TextView
+                android:id="@+id/txt_ante"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Ante: 8"
+                android:textColor="#00E5FF"
+                android:textSize="14sp"
+                android:fontFamily="@font/balatro"/>
+
+            <!-- Extra: Mejor mano -->
+            <TextView
+                android:id="@+id/txt_mano_maxima"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Mano más alta: 100000"
+                android:textColor="#AAAAAA"
+                android:textSize="12sp"
+                android:fontFamily="@font/balatro"/>
+
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/txt_id"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="#1"
+            android:textColor="@color/white"
+            android:textSize="20sp"
+            android:fontFamily="@font/balatro"
+            android:layout_marginRight="12dp"
+            android:textStyle="bold"/>
+
+    </LinearLayout>
+
+    <!-- Separador pequeño transparente -->
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="4dp"/>
+
+
+</LinearLayout>
