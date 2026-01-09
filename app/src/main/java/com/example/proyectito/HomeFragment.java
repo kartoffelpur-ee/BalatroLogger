@@ -46,16 +46,7 @@ public class HomeFragment extends Fragment {
             cuentaToques++;
 
             if(cuentaToques==15) {
-                Toast.makeText(getContext(), "estate quieto verga", Toast.LENGTH_SHORT).show();
-            }
-            else if(cuentaToques==30) {
-                Toast.makeText(getContext(), "otra y te saco pendejo", Toast.LENGTH_SHORT).show();
-            }
-            else if(cuentaToques==31) {
-                Toast.makeText(getContext(), "iiii te chingué", Toast.LENGTH_SHORT).show();
-                if (getActivity() != null) {
-                    getActivity().finishAffinity();
-                }
+                Toast.makeText(getContext(), "Ya basta >:(", Toast.LENGTH_SHORT).show();
             }
         });
     }

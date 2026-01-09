@@ -115,16 +115,16 @@ public class DetallesFragment extends Fragment implements View.OnClickListener {
 
     private String mensajitoJimbo(int ante) {
         if (ante<8) {
-            return "Al menos podrías haber ganado, ¿sabes?";
+            return "Si tuviera manos, me cubriría los ojos...";
         }
         else if (ante>=8 && ante<11) {
             return "¡Yo podría haberlo hecho mejor!";
         }
         else if (ante>=11 && ante<16) {
-            return "Hoy la casa no ganó.";
+            return "Parece que la casa no siempre gana.";
         }
         else if (ante>16) {
-            return "alv papu";
+            return "¡Qué bueno que no aposté contra ti!";
         }
         return "";
     }
