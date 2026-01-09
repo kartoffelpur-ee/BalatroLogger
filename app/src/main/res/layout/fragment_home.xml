@@ -29,11 +29,11 @@
 
     <ImageView
         android:id="@+id/img_jimbo"
-        android:layout_width="200dp"
-        android:layout_height="200dp"
+        android:layout_width="250dp"
+        android:layout_height="250dp"
         android:layout_marginTop="32dp"
         android:layout_marginBottom="32dp"
-        android:src="@drawable/jimbo"
+        android:src="@drawable/polijimbo"
         android:contentDescription="Jimbo" />
 
     <TextView

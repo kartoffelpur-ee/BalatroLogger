@@ -3,6 +3,7 @@ package com.example.proyectito;
 import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.widget.ImageView;
 
 import androidx.activity.EdgeToEdge;
 import androidx.annotation.NonNull;
@@ -15,6 +16,7 @@ import androidx.core.view.WindowInsetsCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
 
+import com.bumptech.glide.Glide;
 import com.google.android.material.appbar.MaterialToolbar;
 import com.google.android.material.navigation.NavigationView;
 
@@ -23,6 +25,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     private DrawerLayout cajonDeNavegacion;
     private NavigationView vistaDeNavegacion;
     private MaterialToolbar barraDeHerramientas;
+    private ImageView crtOverlay;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,6 +36,13 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         cajonDeNavegacion = findViewById(R.id.drawer_layout);
         vistaDeNavegacion = findViewById(R.id.nav_view);
         barraDeHerramientas = findViewById(R.id.top_app_bar);
+        crtOverlay = findViewById(R.id.crt_overlay);
+
+        // Cargamos el GIF del filtro CRT en bucle
+        Glide.with(this).asGif().load(R.drawable.scanlinesgif2).into(crtOverlay);
+
+        // Anulamos el tinte de los íconos del menú
+        vistaDeNavegacion.setItemIconTintList(null);
 
         ViewCompat.setOnApplyWindowInsetsListener(cajonDeNavegacion, (v, insets) -> {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
@@ -83,6 +93,9 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         }
         else if (idElemento == R.id.nav_lista) {
             fragmento = new ListaFragment();
+        }
+        else if (idElemento == R.id.nav_estadisticas) {
+            fragmento = new EstadisticasFragment();
         }
         else {
             fragmento = new HomeFragment();

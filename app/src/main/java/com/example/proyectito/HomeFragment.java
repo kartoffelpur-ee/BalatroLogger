@@ -13,11 +13,12 @@ import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.view.animation.ScaleAnimation;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 
 public class HomeFragment extends Fragment {
     private ImageView imgJimbo;
-
+    private Integer cuentaToques;
     public HomeFragment() {
 
     }
@@ -33,11 +34,29 @@ public class HomeFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
         imgJimbo = view.findViewById(R.id.img_jimbo);
         Animation animacionEntrada = AnimationUtils.loadAnimation(getContext(), R.anim.jimbo);
+        Animation flota = AnimationUtils.loadAnimation(getContext(), R.anim.flotar_suave);
         imgJimbo.startAnimation(animacionEntrada);
+        imgJimbo.startAnimation(flota);
+
+        cuentaToques = 0;
 
         imgJimbo.setOnClickListener(view1 -> {
             reproducirSonidoGracioso();
             animarRebote(view1);
+            cuentaToques++;
+
+            if(cuentaToques==15) {
+                Toast.makeText(getContext(), "estate quieto verga", Toast.LENGTH_SHORT).show();
+            }
+            else if(cuentaToques==30) {
+                Toast.makeText(getContext(), "otra y te saco pendejo", Toast.LENGTH_SHORT).show();
+            }
+            else if(cuentaToques==31) {
+                Toast.makeText(getContext(), "iiii te chingué", Toast.LENGTH_SHORT).show();
+                if (getActivity() != null) {
+                    getActivity().finishAffinity();
+                }
+            }
         });
     }
 

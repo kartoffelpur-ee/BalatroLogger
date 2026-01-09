@@ -47,10 +47,26 @@
             android:background="#FFFFFF" />
 
         <FrameLayout
-            android:id="@+id/contenedorcito"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="1"/>
+            android:layout_weight="1">
+
+            <FrameLayout
+                android:id="@+id/contenedorcito"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"/>
+
+            <ImageView
+                android:id="@+id/crt_overlay"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:scaleType="fitXY"
+                android:alpha="0.12"
+                android:clickable="false"
+                android:focusable="false" />
+
+        </FrameLayout>
+
     </LinearLayout>
 
 
@@ -60,6 +76,10 @@
         android:layout_height="match_parent"
         android:layout_gravity="start"
         android:fitsSystemWindows="true"
+        android:background="@color/black_2"
+        app:itemTextColor="@color/drawer_item_tint"
+        app:itemTextAppearance="@style/BalatroDrawerTextStyle"
+        app:headerLayout="@layout/nav_header"
         app:menu="@menu/drawer_menu" />
 
 </androidx.drawerlayout.widget.DrawerLayout>

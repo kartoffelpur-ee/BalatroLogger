@@ -6,4 +6,8 @@
     </style>
 
     <style name="Theme.Proyectito" parent="Base.Theme.Proyectito" />
+
+    <style name="BalatroDrawerTextStyle" parent="TextAppearance.MaterialComponents.Subtitle1">
+        <item name="android:fontFamily">@font/balatro</item>
+    </style>
 </resources>

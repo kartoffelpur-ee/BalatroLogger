@@ -77,7 +77,7 @@ public class DetallesFragment extends Fragment implements View.OnClickListener {
     }
 
     private void cargarDetallesRun(int runId) {
-        Base admin = new Base(getContext(), "balatrito_db", null, 2);
+        Base admin = new Base(getContext(), "balatrito_db", null, 3);
         SQLiteDatabase db = admin.getReadableDatabase();
 
         Cursor fila = db.rawQuery("SELECT * FROM runs WHERE id = " + runId, null);
@@ -95,7 +95,7 @@ public class DetallesFragment extends Fragment implements View.OnClickListener {
             tvStake.setText(stake);
             tvSeed.setText(seed);
             tvMano.setText(String.format("%,.0f", mano));
-            tvAnte.setText("Ante " + ante);
+            tvAnte.setText(String.valueOf(ante));
 
             if(notas.isEmpty()) {
                 tvNotas.setText("No se agregaron notas adicionales.");
@@ -138,9 +138,30 @@ public class DetallesFragment extends Fragment implements View.OnClickListener {
             confirmaEliminacion();
         }
         else if ( view.getId() == R.id.btn_modifica ) {
-            Toast.makeText(getContext(), "ESTO NO JALA TODAVÍA CABRÓN IDIOTA", Toast.LENGTH_SHORT).show();
+            editaRun();
         }
 
+    }
+
+    private void editaRun() {
+        AltaFragment fragmentitoEditadito = new AltaFragment();
+
+        Bundle pasadito = new Bundle();
+        pasadito.putInt("idEditadito", runId);
+        pasadito.putString("baraja", tvBaraja.getText().toString());
+        pasadito.putString("stake", tvStake.getText().toString());
+        pasadito.putString("seed", tvSeed.getText().toString());
+        pasadito.putString("mano", tvMano.getText().toString().replaceAll("[^0-9]", ""));
+        pasadito.putString("ante", tvAnte.getText().toString());
+        pasadito.putString("notas", tvNotas.getText().toString());
+
+        fragmentitoEditadito.setArguments(pasadito);
+
+        getParentFragmentManager()
+                .beginTransaction()
+                .replace(R.id.contenedorcito, fragmentitoEditadito)
+                .addToBackStack(null)
+                .commit();
     }
 
     private void confirmaEliminacion() {
@@ -163,7 +184,7 @@ public class DetallesFragment extends Fragment implements View.OnClickListener {
     }
 
     private void eliminaBasesita() {
-        Base admin = new Base(getContext(), "balatrito_db", null, 2);
+        Base admin = new Base(getContext(), "balatrito_db", null, 3);
         SQLiteDatabase db = admin.getWritableDatabase();
 
         int filasEliminadas = db.delete("runs", "id="+runId, null);

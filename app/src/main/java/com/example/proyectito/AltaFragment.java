@@ -28,6 +28,9 @@ public class AltaFragment extends Fragment implements View.OnClickListener {
     RadioButton rbRed, rbWhite, rbGreen, rbBlack, rbBlue, rbPurple, rbOrange, rbGold;
     EditText etSeed, etMano, etAnte, etNotas;
 
+    int idEdit = -1;
+    boolean editando = false;
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         return inflater.inflate(R.layout.fragment_alta, container, false);
@@ -71,6 +74,45 @@ public class AltaFragment extends Fragment implements View.OnClickListener {
 
         MazoAdapter adaptadito = new MazoAdapter(getContext(), mazosTextito, mazosImagenes);
         spinnerMazos.setAdapter(adaptadito);
+
+        if(getArguments() != null && getArguments().containsKey("idEditadito")) {
+            taEditando();
+        }
+    }
+
+    private void taEditando() {
+        editando = true;
+        idEdit = getArguments().getInt("idEditadito");
+
+        btnGuardar.setText("ACTUALIZAR RUN");
+
+        String barajita = getArguments().getString("baraja");
+        MazoAdapter adaptadito = (MazoAdapter) spinnerMazos.getAdapter();
+        spinnerMazos.setSelection(adaptadito.getPosition(barajita));
+
+        String stakesito = getArguments().getString("stake");
+        buscarStakesito(stakesito, rgStake, rgStake2);
+        
+        etSeed.setText(getArguments().getString("seed"));
+        etMano.setText(getArguments().getString("mano"));
+        etAnte.setText(getArguments().getString("ante"));
+        etNotas.setText(getArguments().getString("notas"));
+    }
+
+    private void buscarStakesito(String textito, RadioGroup... grupos) {
+        for(RadioGroup grupo: grupos) {
+            for(int i=0; i < grupo.getChildCount(); i++) {
+                View v = grupo.getChildAt(i);
+                if(v instanceof RadioButton) {
+                    RadioButton rb = (RadioButton) v;
+
+                    if( idAString(rb.getId()).equals(textito) ) {
+                        rb.setChecked(true);
+                        return;
+                    };
+                }
+            }
+        }
     }
 
     @Override
@@ -78,9 +120,10 @@ public class AltaFragment extends Fragment implements View.OnClickListener {
         int id = view.getId();
 
         if (id == R.id.btn_guardar) {
-            guardarRun();
+            insertaBD();
             return;
         }
+        
 
         if(id==R.id.rb_red||id==R.id.rb_white||id==R.id.rb_green||id==R.id.rb_black){
             rgStake2.clearCheck();
@@ -88,14 +131,14 @@ public class AltaFragment extends Fragment implements View.OnClickListener {
         else if (id==R.id.rb_blue||id==R.id.rb_purple||id==R.id.rb_orange||id==R.id.rb_gold){
             rgStake.clearCheck();
         }
+
     }
 
-    private void guardarRun() {
-        Base admin = new Base(getContext(), "balatrito_db", null, 2);
+    private void insertaBD() {
+        Base admin = new Base(getContext(), "balatrito_db", null, 3);
         SQLiteDatabase db = admin.getWritableDatabase();
 
         String seedTxt = etSeed.getText().toString().toUpperCase();
-
         String manoTxt = etMano.getText().toString();
         String anteTxt = etAnte.getText().toString();
         String notasTxt = etNotas.getText().toString();
@@ -129,11 +172,21 @@ public class AltaFragment extends Fragment implements View.OnClickListener {
         registro.put("ante", Integer.parseInt(anteTxt));
         registro.put("notas", notasTxt);
 
-        db.insert("runs", null, registro);
-        db.close();
+        if(!editando) {
+            db.insert("runs", null, registro);
+            db.close();
+            Toast.makeText(getContext(), "Se guardó la run con éxito.", Toast.LENGTH_SHORT).show();
+            limpia();
+        }
+        else {
+            int cant = db.update("runs", registro, "id="+idEdit, null);
+            db.close();
 
-        limpia();
-        Toast.makeText(getContext(), "Se guardó la run con éxito.", Toast.LENGTH_SHORT).show();
+            if(cant>0) {
+                Toast.makeText(getContext(), "Se actualizó la run con éxito.", Toast.LENGTH_SHORT).show();
+            }
+            getParentFragmentManager().popBackStack();
+        }
     }
 
     private void limpia() {
